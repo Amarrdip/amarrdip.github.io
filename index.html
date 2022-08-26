@@ -2,6 +2,42 @@
 <html lang="en">
   <head>
     <style>
+#top-button {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    background-color: #e91e6283;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    left: calc(50% - 25px);
+    bottom: 15px;
+}
+.arrow {
+    border: solid white;
+    border-width: 3px 3px 0 0;
+    display: inline-block;
+    margin-top: 40%;
+    padding: 5px;
+    transform: rotate(-45deg);
+}
+h1 {
+    text-align: center;
+    font-size: 40px;
+    color:#000000;
+}
+p {
+    padding: 0 30px 50px 30px;
+}
+p:last-child {
+    padding-bottom: 100px;
+}
+    </style>
+    
+    <style>
 * {
     margin: 0;
     padding: 0;
@@ -918,7 +954,7 @@ html {
   </head>
 
   <body>
-  <i class="fa fa-arrow-up" aria-hidden="true" onclick = "scrollToTop();"></i>
+  <span id="top-button" onclick="scrollToTop()"><span class="arrow"></span></span>
     <section class="sec1" id="section1">
       <div class="menuBar">
         <ul>
@@ -1124,14 +1160,14 @@ html {
               data-aos-delay="500"
               class="sec4__email"
               type="email"
-              placeholder="Enter your Email"
+              required placeholder="Enter your Email"
             />
             <input
               class="sec4__message"
               data-aos="fade-left"
               data-aos-delay="1000"
               type="text"
-              placeholder="enter your message"
+              required placeholder="enter your message"
             />
             <button onclick="myFunction()">send</button>
           </form>
@@ -1142,8 +1178,7 @@ html {
     </section>
     <script>
       function myFunction(){
-        alert("Your message was send to us successfully we will contact you shortly\n Once you click on ok you will redirect at starting page of our website ! \nThanks for visting our website:)"); }
-    </script>
+        alert("Your message will be send send to us successfully only when first wirte your email and message then only you can send mail to us\n If you written mail then ignore\nJust click now ok button you will be redirect to our starting page of our website\nThanks for visiting our website:)")} </script>
     <script
    
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
@@ -1201,16 +1236,20 @@ html {
       });
     </script>
     <script type = "text/javascript">
-        window.addEventListener('scroll',function(){
-            var scroll = document.querySelector('.fa');
-            scroll.classList.toggle("active",window.scrollY>500)
-        })
-        function scrollToTop(){
-            window.scrollTo({
-                top:0,
-                behavior:'smooth'
-            })
-        }
+        window.onscroll = function(){
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+        document.getElementById("top-button").style.display = "block";
+    }
+    else {
+        document.getElementById("top-button").style.display = "none";
+    }
+}
+scrollToTop = function(){
+    document.documentElement.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
     </script>
     <footer>2022Copyright © <a href="https://amarrdip.vercel.app">Amarrdip™</a> <b>All rights reserved</b> credit@viraj</footer>
     
